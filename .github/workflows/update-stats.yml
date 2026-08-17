@@ -1,0 +1,133 @@
+name: Update Profile Stats
+
+on:
+  # Runs once per day.
+  # Using :17 avoids scheduling exactly at the top of the hour.
+  schedule:
+    - cron: "17 5 * * *"
+
+  # Lets you run it manually from:
+  # GitHub -> Actions -> Update Profile Stats -> Run workflow
+  workflow_dispatch:
+
+# Allows the built-in GITHUB_TOKEN to commit the updated README
+# back to THIS profile repository.
+permissions:
+  contents: write
+
+# Prevent two runs from editing the README simultaneously.
+concurrency:
+  group: update-profile-stats
+  cancel-in-progress: true
+
+env:
+  # ============================================================
+  # PERSONAL GITHUB
+  # ============================================================
+
+  PERSONAL_GITHUB_HOST: "github.com"
+  PERSONAL_GITHUB_API_BASE: "https://api.github.com"
+
+  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  # FILL THIS IN
+  # Your normal github.com username.
+  # Example:
+  # PERSONAL_GITHUB_USERNAME: "laurenpothuru"
+  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  PERSONAL_GITHUB_USERNAME: "FILL_THIS_IN"
+
+
+  # ============================================================
+  # CORNELL GITHUB ENTERPRISE
+  # ============================================================
+
+  # Already filled in for you.
+  CORNELL_GITHUB_HOST: "github.coecis.cornell.edu"
+  CORNELL_GITHUB_API_BASE: "https://github.coecis.cornell.edu/api/v3"
+  CORNELL_GITHUB_USERNAME: "lsp75"
+
+
+  # ============================================================
+  # YOUR COMMIT EMAIL ADDRESSES
+  # ============================================================
+
+  # Git commits identify authors primarily by the email stored
+  # in the commit.
+  #
+  # Put EVERY email you've used to make commits here.
+  #
+  # You can have as many lines as necessary.
+  #
+  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  # FILL THESE IN
+  # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  AUTHOR_EMAILS: |
+    FILL_THIS_IN_PERSONAL_COMMIT_EMAIL
+    FILL_THIS_IN_CORNELL_COMMIT_EMAIL
+
+    # OPTIONAL: add any others you've used, for example:
+    # old-personal-email@example.com
+    # 12345678+username@users.noreply.github.com
+
+
+  # ============================================================
+  # README CONFIGURATION
+  # ============================================================
+
+  README_PATH: "README.md"
+  STATS_START_MARKER: "<!-- STATS_START -->"
+  STATS_END_MARKER: "<!-- STATS_END -->"
+
+
+jobs:
+  update-readme:
+    name: Calculate and Update GitHub Stats
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------------------
+      # 1. Checkout your profile repository
+      # --------------------------------------------------------
+      - name: Checkout Profile Repository
+        uses: actions/checkout@v7
+
+
+      # --------------------------------------------------------
+      # 2. Set up Python
+      # --------------------------------------------------------
+      - name: Set Up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+
+      # --------------------------------------------------------
+      # 3. Generate combined personal + Cornell statistics
+      # --------------------------------------------------------
+      - name: Generate GitHub Statistics
+        env:
+          # These secrets are created in your profile repo's
+          # Settings -> Secrets and variables -> Actions.
+          PERSONAL_STATS_TOKEN: ${{ secrets.PERSONAL_STATS_TOKEN }}
+          CORNELL_STATS_TOKEN: ${{ secrets.CORNELL_STATS_TOKEN }}
+
+        run: |
+          python .github/scripts/update_stats.py
+
+
+      # --------------------------------------------------------
+      # 4. Commit only when stats actually changed
+      # --------------------------------------------------------
+      - name: Commit and Push Updated README
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md
+
+          if git diff --cached --quiet; then
+            echo "No statistics changed. Nothing to commit."
+          else
+            git commit -m "chore: update profile stats"
+            git push
+          fi
