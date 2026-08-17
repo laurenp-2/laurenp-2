@@ -1,16 +1,16 @@
-## Hi there 👋
+```
+welcome to
+ _                               _        ____ _ _   _   _       _       
+| |    __ _ _   _ _ __ ___ _ __ ( )___   / ___(_) |_| | | |_   _| |__  
+| |   / _` | | | | '__/ _ \ '_ \|// __| | |  _| | __| |_| | | | | '_ \ 
+| |__| (_| | |_| | | |  __/ | | | \__ \ | |_| | | |_|  _  | |_| | |_) |
+|_____\__,_|\__,_|_|  \___|_| |_| |___/  \____|_|\__|_| |_|\__,_|_.__/ 
 
-<!--
-**laurenp-2/laurenp-2** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
+feel free to check out what i've been working on!
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<!-- STATS_START -->
+<!-- STATS_END -->
+
+ ```                              
+
