@@ -34,7 +34,7 @@ env:
   # Example:
   # PERSONAL_GITHUB_USERNAME: "laurenpothuru"
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  PERSONAL_GITHUB_USERNAME: "FILL_THIS_IN"
+  PERSONAL_GITHUB_USERNAME: "laurenp-2"
 
 
   # ============================================================
@@ -62,8 +62,8 @@ env:
   # FILL THESE IN
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   AUTHOR_EMAILS: |
-    FILL_THIS_IN_PERSONAL_COMMIT_EMAIL
-    FILL_THIS_IN_CORNELL_COMMIT_EMAIL
+    laurenpothuru@gmail.com
+    lsp75@cornell.edu
 
     # OPTIONAL: add any others you've used, for example:
     # old-personal-email@example.com
