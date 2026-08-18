@@ -8,7 +8,7 @@ welcome to
 
 
 feel free to check out what i've been working on!
-
+ ```       
 <!-- STATS_START -->
 ```text
 --------------------------------------------------
@@ -29,5 +29,5 @@ feel free to check out what i've been working on!
 ```
 <!-- STATS_END -->
 
- ```                              
+                       
 
