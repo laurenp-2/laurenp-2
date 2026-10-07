@@ -15,8 +15,8 @@ feel free to check out what i've been working on!
 --------------------------------------------------
   GITHUB ACTIVITY
 --------------------------------------------------
-  Authored Commits                431
-  Lines Added               2,067,742
+  Authored Commits                432
+  Lines Added               2,067,749
   Lines Deleted             1,143,944
   Repositories                     30
 
