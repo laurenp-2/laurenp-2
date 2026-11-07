@@ -15,17 +15,17 @@ feel free to check out what i've been working on!
 --------------------------------------------------
   GITHUB ACTIVITY
 --------------------------------------------------
-  Authored Commits                435
-  Lines Added               2,076,407
-  Lines Deleted             1,143,949
+  Authored Commits                442
+  Lines Added               2,079,149
+  Lines Deleted             1,144,091
   Repositories                     31
 
   Top Languages (by authored additions)
-  TypeScript              37.2%
-  Python                  34.5%
-  CSS                      8.8%
-  Go                       8.3%
-  JavaScript               7.4%
+  TypeScript              38.6%
+  Python                  33.7%
+  CSS                      8.6%
+  Go                       8.1%
+  JavaScript               7.3%
 --------------------------------------------------
 ```
 <!-- STATS_END -->
